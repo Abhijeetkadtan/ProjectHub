@@ -1,0 +1,144 @@
+{% extends 'pdashboard/nav.html' %}
+{% block mainbody %}
+{% load static %}
+<link href="{% static 'img-assets/apple-touch-icon.png' %}" rel="apple-touch-icon">
+<link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}"
+    rel="stylesheet">
+<link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<body>
+{% if updatesuccess %}
+<script>alert("Profile Updated Succesfully!! ");</script>
+{% endif %}
+    <section id="team" class="team">
+        <div class="section-title">
+            <span>Upcomming Events</span>
+            <h2>Upcomming Events</h2>
+            <p>You Can Register/Participate in this Events</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    {% for event in ProjectEv %}
+                    <form action="{% url 'events' %}" method="post">
+                        {% csrf_token %}
+                    <div class="member">
+                        <h2>{{ProjectEv.title}}</h2>
+                        <img src="http://127.0.0.1:8000/media/{{ProjectEv.fronposter}}" alt="">
+                        <p>description: {{ProjectEv.description}}</p>
+                        <p>eventdate: {{ProjectEv.eventdate}}</p>
+                        <p>eventtime: {{ProjectEv.eventtime}}</p>
+                        
+                        <button type="submit" class="btn btn-dark">Register</button>
+                    </div>
+                    </form>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+    {% if updatesuccess %}
+    <script>alert("Profile Updated Succesfully!! ");</script>
+    {% endif %}
+    <!--<div class="profile-container">
+        <div class="profile-header">
+            <h1>Event Page</h1>
+        </div>
+        <div class="profile-content">
+           
+             {% for event in ProjectEv %}
+             <form action="{% url 'events' %}" method="post">
+                {% csrf_token %}
+                <div class="profile-details">
+                    <input type="text" name="projecteid" value="{{ProjectEv.peid}}"/>
+                    <h2>{{ProjectEv.title}}</h2>
+                    <img src="http://127.0.0.1:8000/media/{{ProjectEv.fronposter}}" alt="profile image" height="250px"
+                    width="200px">
+                    <p>description: {{ProjectEv.description}}</p>
+                    <p>eventdate: {{ProjectEv.eventdate}}</p>
+                    <p>eventtime: {{ProjectEv.eventtime}}</p>
+                    
+                    <button type="submit">Register</button>
+                </div>
+            </form> 
+                 {% endfor %} 
+        </div>
+    </div>-->
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-info">
+                            <h3>ProjectCommunity</h3>
+                            <strong>Phone:</strong> +91 9876541230<br>
+                            <strong>Email:</strong> projectCommunity@gmail.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <p style="text-align: justify;">Engaging in community service provides students with the opportunity
+                            to become active
+                            members of their community and has a lasting, positive impact on society at large.
+                            Community service or volunteerism enables students to acquire life skills and knowledge,
+                            as well as provide a service to those who need it most.</p>
+    
+                        <div class="copyright">
+                            &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+                        </div>
+                        <div class="credits">Designed by <a href="https://bootstrapmade.com/">WE3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'pdashboard/nav.html' %}
+{% block mainbody %}
+{% load static %}
+<link href="{% static 'img-assets/apple-touch-icon.png' %}" rel="apple-touch-icon">
+<link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+<link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<div class="container">
+    <img src="{% static 'img-assets/bgimg.jpg' %}" alt="Description of image" width="100%">
+</div>
+
+<section id="services" class="services">
+  <div class="section-title">
+    <span>All Projects</span>
+    <h2>All Projects</h2>
+  </div>
+  <div class="container">
+    {% for i in tp %}
+      <form action="{% url 'treanding' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %} 
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="icon-box">
+          <div class="icon"><i class="bx bxl-dribbble"></i></div>
+          <h4><a href="">Tittle:{{ i.title}}</a></h4>
+          <p>Description:{{i.description}}</p><br>
+          <button type="submit" class="btn btn-dark">Learn More</button>
+      </div>
+    </div>
+  </form>
+  {% endfor %}
+  </div>
+</section>
+
+<!--<div class="container">
+    <div class="trending-projects-section">
+        <h2>Trending Projects</h2>
+        <div class="trending-projects-wrapper">
+
+            {% for i in tp %}
+            <form action="{% url 'treanding' %}" method="post" enctype="multipart/form-data">
+                 {% csrf_token %} 
+                <div class="trending-project-card">
+                    <img src="http://127.0.0.1:8000/media/{{i.frontimg}}" alt="Project Image">
+                    <h3 >{{i.title}}</h3>
+                    <input name="titlekeyword" type="text" value="{{i.title}}" hidden>
+                    <p>{{i.description}}</p>
+                    <button class="knowbtn" type="submit">Know More</button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>-->
+
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-6 order-1 order-lg-2">
+        <img src="{% static 'img-assets/img.jpg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+        <h3>You will see the services that you can trust and the quality that you can afford.</h3>
+        <ul>
+          <li><i class="bi bi-check-circle"></i>Project Community provides a Space or storage through which Students can upload their projects and 
+            records so that all projects and their records are present.</li>
+          <li><i class="bi bi-check-circle"></i> Students can choose a technology they want to create a project or refer to previous projects based on that technology.
+          It helps lots of students don't need to build things from scratch. It will help students to implement a project with the
+          latest technology</li>
+          <li><i class="bi bi-check-circle"></i> Participating in a community bonded by values, and goals are essential and ensure that the needs of all students are
+          considered and met to the best of their project ability, creating advantageous outcomes for larger sectors of the
+          Student Community. This Community gives students an opportunity to observe and analyze real-world situations while
+          improving their professional skills and learning from the realities of their community; they're often an essential
+          source of connection.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-info">
+            <h3>ProjectCommunity</h3>
+              <strong>Phone:</strong> +91 9876541230<br>
+              <strong>Email:</strong> projectCommunity@gmail.com<br>
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+        <p style="text-align: justify;">Engaging in community service provides students with the opportunity to become active 
+            members of their community and has a lasting, positive impact on society at large. 
+            Community service or volunteerism enables students to acquire life skills and knowledge, 
+            as well as provide a service to those who need it most.</p>
+            
+            <div class="copyright">
+              &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">Designed by <a href="https://bootstrapmade.com/">WE3</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}
